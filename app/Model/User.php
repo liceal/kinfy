@@ -48,9 +48,14 @@ class User extends BaseModel
     }
 
     public function test(){
-//        $data = $this->DB->table('article')->where('cate_id','=','3')->OR()->L()->where('cate_id','=','3')->AND()->whereNotNull('cate_id')->R()->get();
         $article = $this->DB->table('article');
-        $data = $article->like('title','文章')->get();
+//        $data = $this->DB->table('article')
+//            ->select('title','cate_id')
+//            ->where('cate_id','=','3')
+//            ->AND()
+//            ->L()->where('cate_id','=','3')->OR()->where('cate_id','=','3')->R()
+//            ->get();
+        $data = $article->join('users','users.id=article.user_id')->get();
 
         echo '<br>';
         print_r($data);

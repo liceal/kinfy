@@ -27,6 +27,7 @@ Router::group('admin',function (){
 //    'UserController@copy',
 //    ['uid'=>'\d+']
 //);
+
 Router::GET('/user', 'UserController@userList');
 
 Router::GET('/test', 'ArticleController@echoAbc');
