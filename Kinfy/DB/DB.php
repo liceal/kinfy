@@ -16,7 +16,6 @@ class DB
 
     public $pdo = null;
 
-
     /**
      * 筛选列
      * @var array
@@ -503,7 +502,7 @@ class DB
     {
         list($WHERE, $VAL) = $this->genWhere();
 
-        $this->sql['sql'] = "DELETE * FROM `{$this->table}` {$WHERE}";
+        $this->sql['sql'] = "DELETE FROM `{$this->table}` {$WHERE}";
         $this->sql['value'] =  $VAL;
 
         return $this->execute();
