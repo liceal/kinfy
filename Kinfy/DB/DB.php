@@ -95,6 +95,7 @@ class DB
 
     /**
      * 选择列
+     * 例子：'title','cate_id'
      * @param mixed ...$fields //列名，多个用数组
      * @return $this
      */
@@ -260,8 +261,8 @@ class DB
                 $where .= $c;
             } else if (isset($c['condition'])) {
                 list($field, $op, $val) = $c['condition'];
-
-                $where .= " `{$field}` {$op} ? ";
+                $field = strpos($field,'.') !== -1 ? $field : '`'.$field.'`';
+                $where .= " {$field} {$op} ? ";
                 $values[] = $val;
             }
         }
